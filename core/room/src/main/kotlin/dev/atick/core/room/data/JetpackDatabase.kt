@@ -18,16 +18,19 @@ package dev.atick.core.room.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import dev.atick.core.room.dao.StudentDao
 import dev.atick.core.room.model.JetpackEntity
+import dev.atick.core.room.model.Student
 
 /**
  * Room database for Jetpack.
  */
 @Database(
-    version = 1,
+    version = 2,
     exportSchema = false,
     entities = [
         JetpackEntity::class,
+        Student::class,
     ],
 )
 abstract class JetpackDatabase : RoomDatabase() {
@@ -37,4 +40,11 @@ abstract class JetpackDatabase : RoomDatabase() {
      * @return The data access object for [JetpackEntity] entity.
      */
     abstract fun getJetpackDao(): JetpackDao
+
+    /**
+     * Get the data access object for [Student] entity.
+     *
+     * @return The data access object for [Student] entity.
+     */
+    abstract fun getStudentDao(): StudentDao
 }
